@@ -15,11 +15,12 @@ cores = {
 
 class Empacotador_contornos_quadrantes:
 
-    def __init__(self) -> None:
+    def __init__(self, metodo_granulometria) -> None:
 
         self.diretorio_amostra_imagens = 'Saidas/Amostras_Processadas/teste/Imagens'
 
 
+        self.metodo_granulometria = metodo_granulometria
 
 
     def empacotar_agregados(self, imagens, titulo_simulacao, metodo_ordenacao, i, porcentagens_preenchimento, quantidade_mapas, agregados_selecionados, tentativas_limite, dist_gran, dist_form, dist_sec, peso_area, peso_dif_gran, peso_dif_form, peso_dif_sec):
@@ -189,13 +190,21 @@ class Empacotador_contornos_quadrantes:
                 maior_contorno[:, 0, 1] += y
 
                 if not self.verificar_sobreposicao_contornos(contornos_posicionados, maior_contorno, tela, tolerancia):
-                    cv2.drawContours(tela, [maior_contorno], -1, cores.get(agregado['granulometria_nbr'], (0, 0, 0)), thickness=cv2.FILLED)
+
+                    if self.metodo_granulometria == 'NBR NM 248':
+                        cv2.drawContours(tela, [maior_contorno], -1, cores.get(agregado['granulometria_nbr'], (0, 0, 0)), thickness=cv2.FILLED)
+                    else:
+                        cv2.drawContours(tela, [maior_contorno], -1, cores.get(agregado['granulometria_pdi'], (0, 0, 0)), thickness=cv2.FILLED)
+
                     contornos_posicionados.append(maior_contorno)
                     sobreposicao = False
 
                     area_total += agregado['area_pixel']
+                    if self.metodo_granulometria == 'NBR NM 248':
+                        cv2.drawContours(tela2, [maior_contorno], -1, cores.get(agregado['granulometria_nbr'], (0, 0, 0)), thickness=2)
+                    else:
+                        cv2.drawContours(tela2, [maior_contorno], -1, cores.get(agregado['granulometria_pdi'], (0, 0, 0)), thickness=2)
 
-                    cv2.drawContours(tela2, [maior_contorno], -1, cores.get(agregado['granulometria_nbr'], (0, 0, 0)), thickness=2)
                 else:
                     tentativas += 1 
 
