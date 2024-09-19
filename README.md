@@ -1,8 +1,8 @@
 # VCGen - Virtual Concrete Generator
 
-## Geração Computacional de Concretos
+## DEMO para visualização de conceitos básicos
 
-Este é um aplicativo web desenvolvido utilizando **Streamlit**, com o objetivo de simular e analisar propriedades de concretos gerados computacionalmente. A aplicação foi criada como parte de um trabalho de conclusão de curso vinculado à **Universidade Estadual do Oeste do Paraná (UNIOESTE)**.
+Este é um aplicativo web desenvolvido utilizando **Streamlit**, com o objetivo de simular modelos computacionais de concretos. A aplicação foi criada como parte de uma pesquisa de iniciação tecnológica vinculada à **Universidade Estadual do Oeste do Paraná (UNIOESTE)**. Por se tratar de um DEMO, a aplicação não contempla todas as funcionalidades desenvolvidas no estudo. Para mais informações contate um dos desenvolvedores.
 
 ### Desenvolvedores
 
@@ -29,7 +29,7 @@ Este é um aplicativo web desenvolvido utilizando **Streamlit**, com o objetivo 
 
 ## Visão Geral
 
-O **VCGen - Virtual Concrete Generator** é uma aplicação que permite a simulação de concretos virtuais com diferentes propriedades granulométricas, metodologias de empacotamento e seleção de agregados. Ele possibilita a realização de diversas simulações com base em parâmetros ajustáveis pelo usuário, como porcentagem ideal de área ocupada por agregados e número de tentativas.
+O **VCGen - Virtual Concrete Generator** é uma aplicação que permite a simulação de concretos virtuais com diferentes propriedades granulométricas, de formato e três metodologias de empacotamento. Ele possibilita a realização de diversas simulações com base em parâmetros ajustáveis pelo usuário, como porcentagem ideal de área ocupada por agregados e número de tentativas.
 
 ---
 
@@ -39,15 +39,19 @@ O **VCGen - Virtual Concrete Generator** é uma aplicação que permite a simula
 - **Python**: Linguagem de programação utilizada para cálculos e geração de dados.
 - **Pandas**: Para manipulação de dados de entrada e resultados.
 - **Numpy**: Para cálculos matemáticos e geração de distribuições granulométricas.
+- **OpenCV** e **Pillow**: Para manipulação e tratamento de imagens.
 
 ---
 
-## Instalação
+## Execução
 
 ### Requisitos
 
-- Python 3.8 ou superior
-- Instalar os pacotes necessários via `pip`:
+- Um Navegador com acesso à internet.
+
+### Acesso
+
+- Para acessar basta visitar o link [https://virtual-concrete-generator-eaicti-2024.streamlit.app/](https://virtual-concrete-generator-eaicti-2024.streamlit.app/).
 
 ```bash
 pip install streamlit pandas numpy
