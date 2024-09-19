@@ -80,7 +80,7 @@ pixels_tolerancia = 3
 
 # Form 2
 with st.form("Form 2"):
-    st.text("Método de seleção e empacotamento")
+    st.text("Método de seleção")
     selecao = st.radio("Método de seleção", options=("única", "contínua"))
     #ordenacao = st.radio("Método de ordenação", options=("estatica", "aleatoria", "decrescente"))
     
