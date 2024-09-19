@@ -221,23 +221,42 @@ def geracao_simulacoes(csv, imagens_dict):
 
     return simulacoes_geradas
 
+cores = {
+    19.5: (0, 0, 255),
+    12.5: (255, 165, 0),
+    9.5: (0, 128, 0),
+    6.3: (255, 0, 0),
+    4.7: (128, 0, 128)
+}
+
+
 with st.form("Form 9"):
     st.text("Gerar simulações")
     submitted9 = st.form_submit_button("Gerar")
     
     if submitted9:
-
         # Gerar imagem com as posições aleatórias
         simulacoes = geracao_simulacoes(csv, imagens_dict)
+
+        # Adicionando a legenda
+        st.markdown("### Lista de Simulações")
+        st.markdown("Legenda de cores por granulometria")
+        legendas = []
+        
+        for granulometria, cor in cores.items():
+            legendas.append(f"<div style='display: inline-block; width: 20px; height: 20px; background-color: rgb{cor}; border: 1px solid black; margin-right: 5px;'></div>{granulometria} mm")
+
+        # Exibir a legenda com cores
+        st.markdown("".join(legendas), unsafe_allow_html=True)
 
         colunas = st.columns(2)
         
         for imagem_dict in simulacoes:
-
             indice = imagem_dict['indice']
             imagem = imagem_dict['imagem']
             imagem2 = imagem_dict['imagem2']
             porcentagem_area = imagem_dict['porcentagem_area']
+            
             # Converter a imagem numpy para PIL para exibir no Streamlit
             imagem_pil = Image.fromarray(imagem)
             imagem2_pil = Image.fromarray(imagem2)
@@ -249,3 +268,5 @@ with st.form("Form 9"):
                 st.image(imagem2_pil, caption=f'Empacotamento Simulação {indice}')
 
 st.markdown("-------------------------------------")
+
+
