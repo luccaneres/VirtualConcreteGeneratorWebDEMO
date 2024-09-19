@@ -102,6 +102,10 @@ O usuário pode fazer upload de arquivos CSV contendo dados relacionados aos agr
 - **Imagens**: Upload de imagens no formato **PNG**, **JPG**, **JPEG** para visualização e processamento.
 
 - Como o escopo da caplicação inclui apenas os agregados efetivamente analisados no estudo, sem acesso à ferramenta que manipula e processa as imagens dos agregados o usuário deverá utilizar os dados disponibilizados no repositório.
+- Para isso, faça o download do arquivo contido no repositório denominado **DadosUpload.zip**
+- No file uploader correspondente ao CSV faça o upload do arquivo contido na pasta CSV.
+- No file uploader correspondente às imagens, selecione todas as imagens contidas na pasta IMAGENS e faça o upload.
+  - Pode ser que o processo de upload das imagens seja demorado, uma sugestão é dividi-las em duas pastas e fazer o upload de metade primeiro e em seguida o restante.
 
 ### Geração de Simulações
 
