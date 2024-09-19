@@ -131,7 +131,11 @@ class Carregar_dados:
 
         qtd_mapas_bits = self.quantidade_mapas
         area_agregados = self.area_agregados
+
+        global metodo_granulometria_global
         metodo_granulometria = self.metodo_granulometria
+        metodo_granulometria_global = metodo_granulometria
+
         metodo_empacotamento = self.metodo_empacotamento
         tolerancia = self.tolerancia
         tentativas_limite = self.tentativas_limite
@@ -246,7 +250,7 @@ class Definicao_probabilidades:
         print(f"Granulometria: {probabilidade_nivel_peneira}, Formato: {probabilidade_formato}, Seção: {probabilidade_secao}")
 
         if probabilidade_formato != 0 and probabilidade_nivel_peneira != 0 and probabilidade_secao != 0:
-            resultado = probabilidade_formato * probabilidade_nivel_peneira * probabilidade_secao * 1/agregado['massa']
+            resultado = probabilidade_formato * probabilidade_nivel_peneira * probabilidade_secao
         else:
             resultado = 0  # Ou outro valor padrão apropriado
 
@@ -274,44 +278,30 @@ class Roleta:
         pass
 
     def selecionar_agregados(self):
-
-        print("selecionando agregados")
-        global area_agregados
         global dados_agregados
+        global area_agregados
         global agregados_selecionados
-
-        print(dados_agregados)
-        print(area_agregados)
 
         agregados_selecionados = []
         area_ocupada = 0.0
         roleta = []
-        
 
-        # Crie uma cópia do dataframe para evitar modificações indesejadas
-        dados_agregados_copia = dados_agregados.copy()
+        # Filtar os agregados com probabilidade maior que 0
+        dados_agregados_copia = dados_agregados[dados_agregados['probabilidade_ofc'] > 0].copy()
 
         for index, row in dados_agregados_copia.iterrows():
-            if row['probabilidade_ofc'] > 0:
-        
-                agregado_info = {col: row[col] for col in dados_agregados_copia.columns}
-                roleta.append(agregado_info)
+            agregado_info = {col: row[col] for col in dados_agregados_copia.columns}
+            roleta.append(agregado_info)
 
         cumulative_probs = [sum(agregado_info['probabilidade_ofc'] for agregado_info in roleta[:i+1]) for i in range(len(roleta))]
 
         while area_ocupada < (float(float(area_agregados)/100) * (300*300)):
-
             random_value = random.uniform(0, 1)
 
             for i, agregado_info in enumerate(roleta):
-
                 if random_value <= cumulative_probs[i]:
-                    # Adicione o dicionário completo do agregado à lista de agregados selecionados
                     agregados_selecionados.append(agregado_info)
                     area_ocupada += agregado_info['area_pixel']
-
-                    print(area_ocupada)
-                    print(agregados_selecionados)
                     break
 
 
@@ -381,9 +371,9 @@ class Gerador_concreto:
 
         saidas = []
 
-        empacotador_esferas = Empacotador_esferas()
-        empacotador_retangulos = Empacotador_retangulos()
-        empacotador_contornos_quadrantes = Empacotador_contornos_quadrantes()
+        empacotador_esferas = Empacotador_esferas(metodo_granulometria_global)
+        empacotador_retangulos = Empacotador_retangulos(metodo_granulometria_global)
+        empacotador_contornos_quadrantes = Empacotador_contornos_quadrantes(metodo_granulometria_global)
 
         for i in range(1, int(qtd_mapas_bits)+1):
 
