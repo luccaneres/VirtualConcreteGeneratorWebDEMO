@@ -125,8 +125,8 @@ class Empacotador_retangulos:
                 imagem_agregado_rotacionada = self.rotacionar_imagem(imagem_agregado, angulo_rotacao)
 
                 # Aplica uma rotação aleatória à imagem
-                x = random.randint(0, self.largura_tela - imagem_agregado_rotacionada.shape[1])
-                y = random.randint(0, self.altura_tela - imagem_agregado_rotacionada.shape[0])
+                x = random.randint(2, 298 - imagem_agregado_rotacionada.shape[1])
+                y = random.randint(2, 298 - imagem_agregado_rotacionada.shape[0])
 
                 imagem_agregado_rotacionada[imagem_agregado_rotacionada[:, :, 3] == 0] = 255
                 imagem_agregado_rotacionada = cv2.cvtColor(imagem_agregado_rotacionada, cv2.COLOR_BGR2GRAY)
