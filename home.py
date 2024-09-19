@@ -118,7 +118,7 @@ st.markdown("-------------------------------------")
 
 # Form 5
 with st.form("Form 5"):
-    formatos = ["cubica", "quadratica", "alongada", "lamelar"]
+    formatos = ["cubica", "alongada"]
     dist_formato = {formato: st.text_input(formato) for formato in formatos}
 
     submitted5 = st.form_submit_button("Enviar")
