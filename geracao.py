@@ -246,7 +246,7 @@ class Definicao_probabilidades:
         print(f"Granulometria: {probabilidade_nivel_peneira}, Formato: {probabilidade_formato}, Seção: {probabilidade_secao}")
 
         if probabilidade_formato != 0 and probabilidade_nivel_peneira != 0 and probabilidade_secao != 0:
-            resultado = probabilidade_formato * probabilidade_nivel_peneira * probabilidade_secao
+            resultado = probabilidade_formato * probabilidade_nivel_peneira * probabilidade_secao * 1/agregado['massa']
         else:
             resultado = 0  # Ou outro valor padrão apropriado
 
@@ -292,11 +292,12 @@ class Roleta:
         dados_agregados_copia = dados_agregados.copy()
 
         for index, row in dados_agregados_copia.iterrows():
-            agregado_info = {col: row[col] for col in dados_agregados_copia.columns}
-            roleta.append(agregado_info)
+            if row['probabilidade_ofc'] > 0:
+        
+                agregado_info = {col: row[col] for col in dados_agregados_copia.columns}
+                roleta.append(agregado_info)
 
         cumulative_probs = [sum(agregado_info['probabilidade_ofc'] for agregado_info in roleta[:i+1]) for i in range(len(roleta))]
-
 
         while area_ocupada < (float(float(area_agregados)/100) * (300*300)):
 
