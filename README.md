@@ -101,6 +101,8 @@ O usuário pode fazer upload de arquivos CSV contendo dados relacionados aos agr
 - **CSV**: Carregar arquivo contendo os dados dos agregados.
 - **Imagens**: Upload de imagens no formato **PNG**, **JPG**, **JPEG** para visualização e processamento.
 
+- Como o escopo da caplicação inclui apenas os agregados efetivamente analisados no estudo, sem acesso à ferramenta que manipula e processa as imagens dos agregados o usuário deverá utilizar os dados disponibilizados no repositório.
+
 ### Geração de Simulações
 
 Após ajustar os parâmetros e realizar o upload dos arquivos necessários, clique em **Gerar Simulações** para iniciar o processo e visualizar os resultados. Uma vez que inseridos os arquivos na etapa **Upload de Arquivos**, os demais parâmetros podem ser alterados livremente, restando apenas o custo computacional de gerar as simulações com estes parâmetros.
