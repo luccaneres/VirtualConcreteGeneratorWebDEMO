@@ -109,7 +109,7 @@ form4.text("Distribuição granulométrica idealizada")
 
 for granulometria in granulometrias:
     valor = form4.text_input(granulometria)
-    dist_granulometrica[granulometria] = valor
+    dist_granulometrica[granulometria] = float(valor) if valor else 0.0
 
 form4.form_submit_button("Enviar")
 
