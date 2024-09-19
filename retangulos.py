@@ -15,9 +15,11 @@ cores = {
 
 class Empacotador_retangulos:
 
-    def __init__(self) -> None:
+    def __init__(self, metodo_granulometria) -> None:
 
         self.diretorio_amostra_imagens = 'Saidas/Amostras_Processadas/teste/Imagens'
+
+        self.metodo_granulometria = metodo_granulometria
 
 
 
@@ -141,15 +143,23 @@ class Empacotador_retangulos:
                 novo_retangulo = (x,y,w,h)
 
                 if not self.verificar_sobreposicao(retangulos_posicionados, novo_retangulo, tolerancia):
-                    cv2.drawContours(tela, [maior_contorno], -1, cores.get(agregado['granulometria_nbr'], (0, 0, 0)), thickness=cv2.FILLED)
+
+                    if self.metodo_granulometria == 'NBR NM 248':
+                        cv2.drawContours(tela, [maior_contorno], -1, cores.get(agregado['granulometria_nbr'], (0, 0, 0)), thickness=cv2.FILLED)
+                    else:
+                        cv2.drawContours(tela, [maior_contorno], -1, cores.get(agregado['granulometria_pdi'], (0, 0, 0)), thickness=cv2.FILLED)
+
                     retangulos_posicionados.append(novo_retangulo)
                     sobreposicao = False
 
                     x, y, w, h = cv2.boundingRect(maior_contorno)
 
                     area_total += agregado['area_pixel']
+                    if self.metodo_granulometria == 'NBR NM 248':
+                        cv2.rectangle(tela2, (x, y), (x + w, y + h), cores.get(agregado['granulometria_nbr'], (0, 0, 0)), 2)  # (255, 0, 0) é a cor vermelha e 2 é a espessura da borda do retângulo
+                    else:
+                        cv2.rectangle(tela2, (x, y), (x + w, y + h), cores.get(agregado['granulometria_pdi'], (0, 0, 0)), 2)
 
-                    cv2.rectangle(tela2, (x, y), (x + w, y + h), cores.get(agregado['granulometria_nbr'], (0, 0, 0)), 2)  # (255, 0, 0) é a cor vermelha e 2 é a espessura da borda do retângulo
 
                 else:
                     tentativas += 1 
