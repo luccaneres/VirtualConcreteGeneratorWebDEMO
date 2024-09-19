@@ -55,13 +55,13 @@ st.markdown("-------------------------------------")
 with st.form("Form 1"):
     st.text("Propriedades da simulação")
     #titulo = st.text_input("Título", value='teste')
-    quantidade_simulacoes = st.text_input("Quantidade de simulações", value='3')
+    quantidade_simulacoes = st.text_input("Quantidade de simulações")
 
-    porcentagem_area = st.text_input("Porcentagem ideal de área ocupada por agregados", value='30')
+    porcentagem_area = st.text_input("Porcentagem ideal de área ocupada por agregados")
 
     #pixels_tolerancia = st.text_input("Pixels de tolerância para o empacotamento", value='3')
 
-    tentativas_limite = st.text_input("Número de tentativas limite", value='200')
+    tentativas_limite = st.text_input("Número de tentativas limite")
 
     
     st.markdown("-------------------------------------")
