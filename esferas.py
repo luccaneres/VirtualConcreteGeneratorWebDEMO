@@ -15,9 +15,11 @@ cores = {
 
 class Empacotador_esferas:
 
-    def __init__(self) -> None:
+    def __init__(self, metodo_granulometria) -> None:
 
         self.diretorio_amostra_imagens = 'Saidas/Amostras_Processadas/teste/Imagens'
+
+        self.metodo_granulometria = metodo_granulometria
 
 
 
@@ -138,7 +140,10 @@ class Empacotador_esferas:
                 
                 if sobreposicao == False:
                     posicoes_imagens.append((x1, y1, raio))
-                    cv2.drawContours(tela, [maior_contorno], -1, cores.get(agregado['granulometria_nbr'], (0, 0, 0)), thickness=cv2.FILLED)
+                    if self.metodo_granulometria == 'NBR NM 248':
+                        cv2.drawContours(tela, [maior_contorno], -1, cores.get(agregado['granulometria_nbr'], (0, 0, 0)), thickness=cv2.FILLED)
+                    else:
+                        cv2.drawContours(tela, [maior_contorno], -1, cores.get(agregado['granulometria_pdi'], (0, 0, 0)), thickness=cv2.FILLED)
 
                     (x, y), raio = cv2.minEnclosingCircle(maior_contorno)
                     centro = (int(x), int(y))
@@ -146,7 +151,11 @@ class Empacotador_esferas:
 
                     area_total += agregado['area_pixel']
 
-                    cv2.circle(tela2, centro, raio, cores.get(agregado['granulometria_nbr']), 2)  # (0, 255, 0) é a cor verde e 2 é a espessura da borda do círculo
+                    if self.metodo_granulometria == 'NBR NM 248':
+                        cv2.circle(tela2, centro, raio, cores.get(agregado['granulometria_nbr']), 2)  # (0, 255, 0) é a cor verde e 2 é a espessura da borda do círculo
+                    else:
+                        cv2.circle(tela2, centro, raio, cores.get(agregado['granulometria_pdi']), 2)
+
 
                 tentativas += 1 
      
