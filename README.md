@@ -1,57 +1,53 @@
-# VirtualConcreteGeneratorWebDEMO
+# VCGen - Virtual Concrete Generator
 
-Como Utilizar
-Parâmetros de Simulação
+## Geração Computacional de Concretos
 
-Na seção Propriedades da Simulação, o usuário pode definir:
+Este é um aplicativo web desenvolvido utilizando **Streamlit**, com o objetivo de simular e analisar propriedades de concretos gerados computacionalmente. A aplicação foi criada como parte de um trabalho de conclusão de curso vinculado à **Universidade Estadual do Oeste do Paraná (UNIOESTE)**.
 
-    Quantidade de simulações: O número de vezes que a simulação será executada.
-    Porcentagem ideal de área ocupada por agregados: Determina a proporção da área ocupada pelos agregados no concreto.
-    Número de tentativas limite: Define o limite de tentativas para cada simulação.
-    Granulometria: O usuário pode selecionar entre os métodos PDI ou NBR NM 248.
-    Método de empacotamento: Escolha entre esferas, retângulos ou contornos quadrantes.
+### Desenvolvedores
 
-Distribuição Granulométrica
+- **Prof. Dr. Rogério Luis Rizzi** - [rogerio.rizzi@unioeste.br](mailto:rogerio.rizzi@unioeste.br)
+- **Lucca Abbado Neres** - [lucca.neres1@unioeste.br](mailto:lucca.neres1@unioeste.br)
 
-O aplicativo permite que o usuário insira uma distribuição granulométrica personalizada, dividida em diferentes tamanhos, como:
+---
 
-    19.5 mm
-    12.5 mm
-    9.5 mm
-    6.3 mm
-    4.7 mm
+## Índice
 
-Upload de Arquivos
+1. [Visão Geral](#visão-geral)
+2. [Tecnologias Utilizadas](#tecnologias-utilizadas)
+3. [Instalação](#instalação)
+4. [Como Utilizar](#como-utilizar)
+   - [Parâmetros de Simulação](#parâmetros-de-simulação)
+   - [Distribuição Granulométrica](#distribuição-granulométrica)
+   - [Upload de Arquivos](#upload-de-arquivos)
+   - [Geração de Simulações](#geração-de-simulações)
+5. [Funcionalidades](#funcionalidades)
+6. [Contribuição](#contribuição)
+7. [Licença](#licença)
 
-O usuário pode fazer o upload de:
+---
 
-    CSV com as informações dos agregados.
-    Imagens dos agregados para visualização.
+## Visão Geral
 
-Os arquivos devem ser arrastados e soltos ou selecionados através da opção de upload.
-Geração de Simulações
+O **VCGen - Virtual Concrete Generator** é uma aplicação que permite a simulação de concretos virtuais com diferentes propriedades granulométricas, metodologias de empacotamento e seleção de agregados. Ele possibilita a realização de diversas simulações com base em parâmetros ajustáveis pelo usuário, como porcentagem ideal de área ocupada por agregados e número de tentativas.
 
-Após ajustar todos os parâmetros e realizar os uploads, clique no botão Gerar Simulações para iniciar o processo.
-Funcionalidades
+---
 
-    Simulação com base em propriedades granulométricas e porcentagens definidas pelo usuário.
-    Escolha de diferentes métodos de empacotamento de agregados.
-    Possibilidade de realizar múltiplas simulações.
-    Geração de relatórios e gráficos para análise dos resultados.
-    Upload de arquivos CSV e imagens para enriquecer as simulações.
+## Tecnologias Utilizadas
 
-Contribuição
+- **Streamlit**: Framework principal para a construção da interface web interativa.
+- **Python**: Linguagem de programação utilizada para cálculos e geração de dados.
+- **Pandas**: Para manipulação de dados de entrada e resultados.
+- **Numpy**: Para cálculos matemáticos e geração de distribuições granulométricas.
 
-Sinta-se à vontade para contribuir com este projeto. Para contribuir:
+---
 
-    Faça um fork do projeto.
-    Crie uma branch para sua funcionalidade (git checkout -b minha-nova-funcionalidade).
-    Commit suas alterações (git commit -am 'Adiciona nova funcionalidade').
-    Faça o push para a branch (git push origin minha-nova-funcionalidade).
-    Crie um novo Pull Request.
+## Instalação
 
-Licença
+### Requisitos
 
-Este projeto está licenciado sob os termos da MIT License.
+- Python 3.8 ou superior
+- Instalar os pacotes necessários via `pip`:
 
-Com esse README, você pode documentar bem o funcionamento e propósito do seu aplicativo, além de ajudar os usuários a entenderem como configurá-lo e usá-lo adequadamente.
+```bash
+pip install streamlit pandas numpy
